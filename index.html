@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AIRWAVES | Operations</title>
+  <link rel="icon" href="/assets/airwaves-logo.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>
+</head>
+<body data-page="admin">
+  <header class="topbar"><div class="container bar"><a class="brand" href="/admin/">AIRWAVES<span> OPERATIONS</span></a></div></header>
+  <main class="container">
+    <section class="section"><p class="eyebrow">AUTHORIZED STAFF</p><h1>Operations portal</h1><p id="status" role="status" aria-live="polite"></p>
+      <div id="auth" hidden>
+        <form id="login" class="card compact"><h2>Staff sign-in</h2>
+          <label>Username<input name="identifier" autocomplete="username" required maxlength="40"></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="128"></label>
+          <label>Authenticator code<input name="code" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required></label>
+          <button>Sign in</button>
+        </form>
+      </div>
+      <div id="session" hidden>
+        <div class="toolbar"><p id="profile"></p><button class="secondary" type="button" id="logout">Sign out</button></div>
+        <section class="card">
+          <div class="toolbar"><h2>Transaction register</h2><button class="secondary" type="button" id="refresh">Refresh</button></div>
+          <form id="filters" class="filters">
+            <label>Status<select name="status"><option value="">All</option><option value="uncertain">Needs review</option><option value="pending">Payment pending</option><option value="paid">Paid</option><option value="failed">Failed</option><option value="processing">Delivery processing</option><option value="delivered">Delivered</option></select></label>
+            <label>From (EAT)<input name="from" type="date"></label>
+            <label>To (EAT)<input name="to" type="date"></label>
+            <label>Airtime amount (KES)<input name="amount" type="number" min="10" max="10000" step="1"></label>
+            <button>Apply filters</button>
+          </form>
+          <p id="register-summary" class="muted"></p>
+          <ul class="orders" id="orders"></ul><button class="secondary" type="button" id="more" hidden>Load older transactions</button>
+        </section>
+        <section class="card detail" id="detail" hidden tabindex="-1"></section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

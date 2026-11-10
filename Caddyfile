@@ -1,0 +1,4 @@
+{$PUBLIC_ORIGIN} {
+	# Keep query strings (including webhook credentials) out of access logs.
+	reverse_proxy app:8787
+}

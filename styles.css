@@ -1,0 +1,65 @@
+:root {
+  --ink: #15271e; --muted: #52635a; --line: #dce6dc; --paper: #f5f8f4; --white: #fff;
+  --forest: #1b412e; --accent: #d9e8aa; --warning: #8b341b;
+  color: var(--ink); background: var(--paper);
+  font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid #8caa4c; outline-offset: 3px; }
+.container { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+.topbar { background: var(--white); border-bottom: 1px solid var(--line); }
+.bar, .toolbar, .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.bar { min-height: 74px; padding-block: 10px; }
+.brand { font-weight: 850; letter-spacing: .06em; text-decoration: none; }
+.brand span { font-size: .68rem; color: var(--muted); }
+nav, .actions, .chips { display: flex; gap: 10px 16px; align-items: center; flex-wrap: wrap; }
+nav a { font-size: .9rem; text-underline-offset: .2em; }
+h1, h2, h3, p { margin: 0 0 .65em; }
+h1 { font-size: clamp(2rem, 5vw, 4.05rem); line-height: 1.05; letter-spacing: -.05em; }
+h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); line-height: 1.2; letter-spacing: -.025em; }
+h3 { font-size: 1.12rem; }
+.hero { margin-top: 26px; padding: clamp(24px, 5vw, 60px); background: linear-gradient(135deg,#172f23,#2c5136); color: white; border-radius: 24px;
+  display: grid; grid-template-columns: 1.5fr 1fr; align-items: center; gap: clamp(20px, 4vw, 52px); }
+.hero p { color: #e3efe6; max-width: 46ch; }
+.hero aside { border: 1px solid #b9d2ba80; background: #ffffff0c; padding: 22px; border-radius: 16px; }
+.hero .button { margin-top: .7em; background: var(--accent); color: var(--ink); }
+.eyebrow { font-size: .73rem; letter-spacing: .14em; font-weight: 800; color: #466248; }
+.hero .eyebrow { color: var(--accent); }
+.chips span { font-size: .8rem; border: 1px solid #c8dec6; padding: 3px 9px; border-radius: 20px; }
+.section { padding-block: 34px; }
+.steps, .columns { display: grid; gap: 16px; align-items: start; }
+.steps { grid-template-columns: repeat(3,1fr); margin: 16px 0 0; padding: 0; list-style: none; }
+.columns { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.steps li, .card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: clamp(16px, 3vw, 24px); }
+.steps strong { color: #537642; }
+.steps p, .muted { color: var(--muted); }
+button, .button { background: var(--forest); color: white; font: inherit; font-size: .9rem; font-weight: 700; min-height: 42px;
+  padding: .62em 1em; border: 1px solid transparent; border-radius: 9px; cursor: pointer; display: inline-block; text-decoration: none; }
+button.secondary { background: #edf3ea; color: var(--ink); border-color: var(--line); }
+button:disabled { opacity: .58; cursor: wait; }
+form label { display: grid; gap: 4px; font-size: .9rem; font-weight: 650; margin-bottom: 12px; }
+input, select, textarea { font: inherit; color: inherit; border: 1px solid #a9b8ac; border-radius: 8px; min-height: 42px; padding: .45em .65em; width: 100%; background: white; }
+.check { display: flex; align-items: start; gap: 8px; font-weight: 500; }
+.check input { width: auto; min-height: 0; margin-top: .4em; }
+#status { min-height: 1.5em; color: var(--forest); }
+#status.error { color: var(--warning); }
+.orders { list-style: none; padding: 0; margin: 10px 0; }
+.orders li { border-top: 1px solid var(--line); padding: 10px 0; display: flex; align-items: center; gap: 8px 14px; justify-content: space-between; flex-wrap: wrap; }
+.orders small { display: block; color: var(--muted); }
+.detail { margin-top: 16px; overflow-wrap: anywhere; }
+dl { display: grid; grid-template-columns: minmax(125px,auto) minmax(0,1fr); gap: 5px 14px; }
+dt { color: var(--muted); }
+dd { margin: 0; font-weight: 650; }
+.compact { max-width: 480px; }
+.filters { display: flex; align-items: end; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.filters label { margin: 0; flex: 1 1 135px; }
+footer { background: #e6eee3; padding: 18px 0; }
+@media (max-width: 720px) { .hero, .steps, .columns { grid-template-columns: 1fr; } }
+@media print {
+  body > :not(main), main > :not(#account), #account > :not(#session), #session > :not(#detail), #detail button { display: none; }
+  #detail { margin: 0; padding: 0; border: 0; }
+  #account { padding: 0; }
+}

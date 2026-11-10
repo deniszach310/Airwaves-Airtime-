@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15271e">
+  <meta name="description" content="Buy airtime with M-Pesa and track your top-ups in your AIRWAVES account.">
+  <title>AIRWAVES | Airtime top-ups</title>
+  <link rel="icon" href="/assets/airwaves-logo.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="customer">
+  <header class="topbar">
+    <div class="container bar"><a class="brand" href="/">AIRWAVES<span> AIRTIME PORTAL</span></a>
+      <nav aria-label="Main"><a href="#how">How it works</a><a href="#account">My account</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div><p class="eyebrow">AIRWAVES AIRTIME</p><h1 id="hero-title">Airtime for you or someone else.</h1>
+        <p>Review your price, verify your payment number and approve the M-Pesa prompt on your phone.</p>
+        <a class="button" href="#account">Buy airtime</a>
+      </div>
+      <aside><h2>Service availability</h2><p id="availability" role="status">Checking available networks…</p><div id="network-summary" class="chips"></div></aside>
+    </section>
+    <section id="how" class="section">
+      <p class="eyebrow">HOW IT WORKS</p><h2>From top-up to receipt</h2>
+      <ol class="steps">
+        <li><strong>01</strong><h3>Review your order</h3><p>Choose a network, confirm the recipient and see the exact amount due.</p></li>
+        <li><strong>02</strong><h3>Verify and pay</h3><p>Enter the SMS code, then approve the M-Pesa prompt on your handset.</p></li>
+        <li><strong>03</strong><h3>Track delivery</h3><p>Check the payment, airtime delivery and printable receipt from your account.</p></li>
+      </ol>
+    </section>
+    <section id="account" class="section" aria-labelledby="account-title">
+      <p class="eyebrow">CUSTOMER ACCOUNT</p><h2 id="account-title">My account</h2>
+      <p id="status" role="status" aria-live="polite"></p>
+      <div id="auth" class="columns" hidden>
+        <form id="login" class="card"><h3>Sign in</h3>
+          <label>Phone or email<input name="identifier" autocomplete="username" required maxlength="254"></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="128"></label>
+          <button>Sign in</button>
+        </form>
+        <form id="register" class="card"><h3>Create an account</h3>
+          <label>Full name<input name="name" autocomplete="name" required maxlength="100"></label>
+          <label>Kenyan phone number<input name="phone" type="tel" autocomplete="tel" required maxlength="24"></label>
+          <label>Email (optional)<input name="email" type="email" autocomplete="email" maxlength="254"></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" required minlength="12" maxlength="128"></label>
+          <button>Create account</button>
+        </form>
+      </div>
+      <div id="session" hidden>
+        <div class="toolbar"><p id="profile"></p><button type="button" class="secondary" id="logout">Sign out</button></div>
+        <div class="columns">
+          <div class="card"><h3>Buy airtime</h3>
+            <p id="checkout-unavailable" hidden>Purchasing is temporarily unavailable. You can still check your transactions.</p>
+            <form id="quote" hidden>
+              <label>Recipient network<select name="network" required></select></label>
+              <label>Airtime recipient<input name="recipient" type="tel" required maxlength="24"></label>
+              <label>M-Pesa payer<input name="payer" type="tel" required maxlength="24"></label>
+              <label>Airtime amount (KES)<input name="amount" type="number" min="10" max="10000" step="1" required></label>
+              <p class="muted" id="amount-range"></p>
+              <button>Review price</button>
+            </form>
+            <form id="confirm" hidden>
+              <dl id="quote-summary"></dl>
+              <label class="check"><input name="terms" type="checkbox" required><span>I confirm the recipient, payer and amount, and accept the <a id="checkout-terms" rel="noopener noreferrer" target="_blank">purchase terms</a>.</span></label>
+              <div class="actions"><button>Send verification SMS</button><button type="button" class="secondary" data-reset>Change order</button></div>
+            </form>
+            <form id="verify" hidden>
+              <p>Enter the six-digit code sent to the M-Pesa payer. The code expires after five minutes.</p>
+              <label>SMS verification code<input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" required maxlength="6"></label>
+              <div class="actions"><button>Verify and send M-Pesa prompt</button><button type="button" class="secondary" data-reset>Start over</button></div>
+            </form>
+          </div>
+          <section class="card" aria-labelledby="activity"><div class="toolbar"><h3 id="activity">Transaction history</h3><button class="secondary" type="button" id="refresh">Refresh</button></div>
+            <ul class="orders" id="orders"></ul><button class="secondary" type="button" id="more" hidden>Load older transactions</button>
+          </section>
+        </div>
+        <section class="card detail" id="detail" hidden tabindex="-1"></section>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer"><span>AIRWAVES</span><div id="links" class="actions"></div></div></footer>
+</body>
+</html>
